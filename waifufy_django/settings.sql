@@ -1,3 +1,4 @@
+DROP DATABASE waifufy;
 CREATE DATABASE waifufy;
 CREATE USER waifufyuser WITH PASSWORD 'waifufy';
 GRANT ALL PRIVILEGES ON DATABASE waifufy TO waifufyuser;

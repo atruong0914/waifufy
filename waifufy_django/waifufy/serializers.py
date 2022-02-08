@@ -2,53 +2,21 @@ from .models import Playlist, Artist, Song
 from rest_framework import serializers
 from accounts.models import User
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    playlists = serializers.HyperlinkedRelatedField(
-        view_name='playlist_detail',
-        many=True,
-        read_only=True
-    )
-
-    user_url = serializers.ModelSerializer.serializer_url_field(
-        view_name='user_detail'
-    )
-
-class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
-    user = serializers.HyperlinkedRelatedField(
-        view_name='user_detail',
-        many=True,
-        read_only=True
-    )
-
-    user_id = serializers.PrimaryKeyRelatedField(
-        queryset=User.objects.all(),
-        source='user'
-    )
-    
-    class Meta:
-        model = Playlist
-        fields = ('id', 'user', 'name', 'user_id', 'description', 'songs')
-
 
 class ArtistSerializer(serializers.HyperlinkedModelSerializer):
-    songs = serializers.HyperlinkedRelatedField(
-        view_name='song_detail',
-        many=True,
-        read_only=True
-    )
 
-    artist_url = serializers.ModelSerializer.serializer_url_field(
-        view_name='artist_detail'
+    songs = serializers.PrimaryKeyRelatedField(
+        queryset=Song.objects.all(),
+        many=True,
     )
 
     class Meta:
         model = Artist
-        fields = ('id', 'name', 'bio', 'artist_image', 'artist_url', 'songs')
+        fields = ('id', 'name', 'bio', 'artist_image', 'songs')
 
 
-class SongSerializer(serializers.HyperlinkedModelSerializer):
-    artist = serializers.HyperlinkedRelatedField(
-        view_name='artist_detail',
+class SongSerializer(serializers.ModelSerializer):
+    artist = serializers.PrimaryKeyRelatedField(
         read_only=True
     )
 
@@ -57,16 +25,48 @@ class SongSerializer(serializers.HyperlinkedModelSerializer):
         source='artist'
     )
 
-    playlist = PlaylistSerializer(
+    playlist = serializers.PrimaryKeyRelatedField(
+        queryset=Playlist.objects.all(),
+        many=True
+    )
+
+
+    class Meta:
+        model = Song
+        fields = ('id', 'artist', 'artist_id', 'playlist', 'name', 'song_image', 'song_file')
+
+
+class PlaylistSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        read_only=True
+    )
+
+    user_id = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        source='user'
+    )
+
+    songs = SongSerializer(
+        many=True,
+        read_only=True
+    )
+    
+    class Meta:
+        model = Playlist
+        fields = ('id', 'user', 'name', 'user_id', 'description', 'songs')
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    # playlists = PlaylistSerializer(
+    #     many=True,
+    #     read_only=True
+    # )
+    playlists = serializers.PrimaryKeyRelatedField(
         many=True,
         read_only=True
     )
 
-    song_url = serializers.ModelSerializer.serializer_url_field(
-        view_name='song_detail'
-    )
 
     class Meta:
-        model = Song
-        fields = ('id', 'artist', 'artist_id', 'playlist', 'name', 'song_image', 'song_file', 'song_url')
-
+        model = User
+        fields = ('id', 'first_name', 'last_name', 'email', 'username', 'password', 'avatar', 'playlists')

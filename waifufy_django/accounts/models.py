@@ -35,8 +35,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=45)
-    email = models.EmailField(max_length=100, unique=True)
-    username = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    username = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=100)
     avatar = models.ImageField(upload_to='avatars')
     is_staff = models.BooleanField(default=False)
@@ -44,9 +44,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
     
     def __str__(self):
         return self.username
