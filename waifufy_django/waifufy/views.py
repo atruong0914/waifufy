@@ -2,6 +2,7 @@ from .serializers import UserSerializer, PlaylistSerializer, ArtistSerializer, S
 from .models import Playlist, Artist, Song
 from rest_framework import generics
 from accounts.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class UserList(generics.ListCreateAPIView):
