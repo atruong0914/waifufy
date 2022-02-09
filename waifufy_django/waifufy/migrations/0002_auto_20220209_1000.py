@@ -5,7 +5,7 @@ def seed(apps, schema_editor):
     User = apps.get_model('accounts', 'User')
     Playlist = apps.get_model('waifufy', 'Playlist')
     Artist = apps.get_model('waifufy', 'Artist')
-    Song = apps.get_model('waifufy', 'Song')
+    # Song = apps.get_model('waifufy', 'Song')
 
 # user info
     admin = User(first_name='admin', last_name='mod', email='admin@email.com', username='admin', password='iamtheboss123', avatar='avatars/khaly2.png', is_staff=True, is_active=True)
@@ -64,33 +64,33 @@ def seed(apps, schema_editor):
     dane.save()
     
 # song info
-    Song(artist=bruno, playlist=sad_stuff, name='when i was your man', song_image='songs/yourman.jpg', song_file='songs/wiwym.mp3').save()
-    Song(artist=doja, playlist=rnb, name='you right', song_image='songs/youright.jpg', song_file='songs/yr.mp3').save()
-    Song(artist=giveon, playlist=sad_stuff, name='like i want you', song_image='songs/likeiwantyou.png', song_file='songs/liwy.mp3').save()
-    Song(artist=dane, playlist=rnb, name='green tea and honey', song_image='songs/greentea.jpg', song_file='songs/gtah.mp3').save()
-    Song(artist=stereopony, playlist=anime_hype, name='hitohira no hanabi', song_image='songs/hito.png', song_file='songs/hitohira.mp3').save()
-    Song(artist=james, playlist=sad_stuff, name='train wreck', song_image='songs/trainwreck.jpg', song_file='songs/trainwreck.mp3').save()
-    Song(artist=kayou, playlist=lofi, name='i thought i had you', song_image='songs/hadyou.jpg', song_file='songs/hy.mp3').save()
-    Song(artist=kina, playlist=lofi, name='get you the moon', song_image='songs/moon.jpg', song_file='songs/gytm.mp3').save()
-    Song(artist=xaster, playlist=random, name='lost and found', song_image='songs/lost.jpg', song_file='songs/lost&found.mp3').save()
-    Song(artist=luna, playlist=anime_chill, name='overfly', song_image='songs/overfly.png', song_file='songs/overfly.mp3').save()
-    Song(artist=kina, playlist=lofi, name='get you the moon', song_image='songs/moon.jpg', song_file='songs/gytm.mp3').save()
-    Song(artist=risa, playlist=anime_hype, name='yakusoku no kizuna', song_image='songs/yakusoku.jpg', song_file='songs/yakusoku.mp3').save()
-    Song(artist=olivia, playlist=sad_stuff, name='happier', song_image='songs/happier.png', song_file='songs/happier.mp3').save()
-    Song(artist=niki, playlist=rnb, name='lowkey', song_image='songs/lowkey.jpg', song_file='songs/lowkey.mp3').save()
-    Song(artist=shawn, playlist=random, name='it will be okay', song_image='songs/beok.jpg', song_file='songs/beok.mp3').save()
-    Song(artist=snow, playlist=lofi, name='i never wanna lose you', song_image='songs/snowlofi.jpg', song_file='songs/never.mp3').save()
-    Song.playlist.set()
+    # Song(artist=bruno, playlist=sad_stuff, name='when i was your man', song_image='songs/yourman.jpg', song_file='songs/wiwym.mp3').save()
+    # Song(artist=doja, playlist=rnb, name='you right', song_image='songs/youright.jpg', song_file='songs/yr.mp3').save()
+    # Song(artist=giveon, playlist=sad_stuff, name='like i want you', song_image='songs/likeiwantyou.png', song_file='songs/liwy.mp3').save()
+    # Song(artist=dane, playlist=rnb, name='green tea and honey', song_image='songs/greentea.jpg', song_file='songs/gtah.mp3').save()
+    # Song(artist=stereopony, playlist=anime_hype, name='hitohira no hanabi', song_image='songs/hito.png', song_file='songs/hitohira.mp3').save()
+    # Song(artist=james, playlist=sad_stuff, name='train wreck', song_image='songs/trainwreck.jpg', song_file='songs/trainwreck.mp3').save()
+    # Song(artist=kayou, playlist=lofi, name='i thought i had you', song_image='songs/hadyou.jpg', song_file='songs/hy.mp3').save()
+    # Song(artist=kina, playlist=lofi, name='get you the moon', song_image='songs/moon.jpg', song_file='songs/gytm.mp3').save()
+    # Song(artist=xaster, playlist=random, name='lost and found', song_image='songs/lost.jpg', song_file='songs/lost&found.mp3').save()
+    # Song(artist=luna, playlist=anime_chill, name='overfly', song_image='songs/overfly.png', song_file='songs/overfly.mp3').save()
+    # Song(artist=kina, playlist=lofi, name='get you the moon', song_image='songs/moon.jpg', song_file='songs/gytm.mp3').save()
+    # Song(artist=risa, playlist=anime_hype, name='yakusoku no kizuna', song_image='songs/yakusoku.jpg', song_file='songs/yakusoku.mp3').save()
+    # Song(artist=olivia, playlist=sad_stuff, name='happier', song_image='songs/happier.png', song_file='songs/happier.mp3').save()
+    # Song(artist=niki, playlist=rnb, name='lowkey', song_image='songs/lowkey.jpg', song_file='songs/lowkey.mp3').save()
+    # Song(artist=shawn, playlist=random, name='it will be okay', song_image='songs/beok.jpg', song_file='songs/beok.mp3').save()
+    # Song(artist=snow, playlist=lofi, name='i never wanna lose you', song_image='songs/snowlofi.jpg', song_file='songs/never.mp3').save()
+    
 
 def fallow(apps, schema_editor):
     User = apps.get_model('accounts', 'User')
     Playlist = apps.get_model('waifufy', 'Playlist')
     Artist = apps.get_model('waifufy', 'Artist')
-    Song = apps.get_model('waifufy', 'Song')
+    # Song = apps.get_model('waifufy', 'Song')
     User.objects.all().delete()
     Playlist.objects.all().delete()
     Artist.objects.all().delete()
-    Song.objects.all().delete()
+    # Song.objects.all().delete()
 
 class Migration(migrations.Migration):
 
