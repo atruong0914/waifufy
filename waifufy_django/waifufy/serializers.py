@@ -57,10 +57,7 @@ class PlaylistSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    # playlists = PlaylistSerializer(
-    #     many=True,
-    #     read_only=True
-    # )
+
     playlists = serializers.PrimaryKeyRelatedField(
         many=True,
         read_only=True
