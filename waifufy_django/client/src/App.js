@@ -42,12 +42,17 @@ export default function App() {
     })
   }
 
+  const someFunc = () => {
+    localStorage.setItem('a', 'bsdf')
+  }
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
       getAuthUser()
+      // console.log(token)
     }
+    someFunc()
   }, [])
 
   // show nav and footer only if user is authenticated
@@ -81,16 +86,16 @@ export default function App() {
   }
 
   // when retrieving data from the backend, show loading if havent received yet
-  if (loading) {
-    return ( <Loading /> )
-  }
+  // if (loading) {
+  //   return ( <Loading /> )
+  // }
 
   return (
     <div>
       { navShow() }{ footShow() }
       <Routes>
       { authenticated ? (
-        <div>
+        <>
           <Route path='/' element={<Home authUser={authUser}/>} />
           <Route path='/about' element={<About authUser={authUser}/>} />
           <Route path='/artists' element={<Artists authUser={authUser}/>} />
@@ -99,19 +104,20 @@ export default function App() {
           <Route path='/artists/:id' element={<EditArtist authUser={authUser}/>} />
           <Route path='/playlists/:id' element={<EditPlaylist authUser={authUser}/>} />
           <Route path='/songs/:id' element={<EditSong authUser={authUser}/>} />
-        </div>
+        </>
       ) : (
-        <div>
+        <>
           <Route 
           path='/' 
-          element={ <Login 
-          setUser={setUser} 
-          toggleAuthenticated={toggleAuthenticated}
-          getAuthUser={getAuthUser}
+          element={ <Login
+            setUser={setUser}
+            toggleAuthenticated={toggleAuthenticated}
+            getAuthedUser={getAuthUser}
           /> }
           />
           <Route path='/register' element={<Register />} />
-        </div>
+        
+      </>
       )}
       </Routes>
     </div>

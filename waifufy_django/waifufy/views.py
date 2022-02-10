@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here
 class UserList(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
