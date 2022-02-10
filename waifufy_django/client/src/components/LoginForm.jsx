@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Login } from '../services/Auth'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 export default function LoginForm(props) {
     const navigate = useNavigate()
@@ -28,7 +29,8 @@ export default function LoginForm(props) {
 
   return (
     <div>
-    <Box
+    <Box 
+      onSubmit={handleSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -36,26 +38,25 @@ export default function LoginForm(props) {
       noValidate
       autoComplete="off"
     >
-   <div>
+   <div className='text'>
     <TextField
       required
-      id="outlined-required"
-      label="Required"
-      defaultValue="Hello World"
+      id="username"
+      label="Username"
+      onChange={handleChange}
+      value={formVal.email}
     />
     <TextField
-      disabled
-      id="outlined-disabled"
-      label="Disabled"
-      defaultValue="Hello World"
-    />
-    <TextField
-      id="outlined-password-input"
+      required
+      id="password"
       label="Password"
       type="password"
       autoComplete="current-password"
+      onChange={handleChange}
+      value={formVal.password}
     />
     </div>
+    <Button disabled={ !formVal.email || !formVal.password } variant='outlined'>Log In</Button>
     </Box>
     </div>
   )
