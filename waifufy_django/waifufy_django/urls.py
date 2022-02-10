@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('waifufy.urls')),
     path('', include('accounts.urls')),
     path('api/', include('waifufy.urls', namespace='waifufy')),
+    
     path('api/user/', include('accounts.urls', namespace='accounts')),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

@@ -1,56 +1,33 @@
 from .serializers import UserSerializer, PlaylistSerializer, ArtistSerializer, SongSerializer
 from .models import Playlist, Artist, Song
-from rest_framework import generics, permissions, filters
+from rest_framework import generics, permissions, filters, viewsets
 from accounts.models import User
 from rest_framework.permissions import IsAuthenticated
 
+
 # Create your views here
-class UserList(generics.ListCreateAPIView):
+class UserList(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class PlaylistList(generics.ListCreateAPIView):
+class PlaylistList(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
 
 
-class PlaylistDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = Playlist.objects.all()
-    serializer_class = PlaylistSerializer
-
-
-class ArtistList(generics.ListCreateAPIView):
+class ArtistList(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
 
 
-class ArtistDetail(generics.RetrieveUpdateDestroyAPIView):
+class SongList(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
-    queryset = Artist.objects.all()
-    serializer_class = ArtistSerializer
-
-
-class SongList(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
-    queryset = Song.objects.all()
     serializer_class = SongSerializer
-
-
-class SongDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
     queryset = Song.objects.all()
-    serializer_class = SongSerializer
 
 
 #  song search
