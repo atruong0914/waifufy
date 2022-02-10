@@ -27,6 +27,36 @@ export default function LoginForm(props) {
     }
 
   return (
-    <div>LoginForm</div>
+    <div>
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+   <div>
+    <TextField
+      required
+      id="outlined-required"
+      label="Required"
+      defaultValue="Hello World"
+    />
+    <TextField
+      disabled
+      id="outlined-disabled"
+      label="Disabled"
+      defaultValue="Hello World"
+    />
+    <TextField
+      id="outlined-password-input"
+      label="Password"
+      type="password"
+      autoComplete="current-password"
+    />
+    </div>
+    </Box>
+    </div>
   )
 }

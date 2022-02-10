@@ -1,7 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { BASE_URL } from './globals'
 import { CheckSession } from './services/Auth'
 import axios from 'axios'
 import About from './pages/About'
@@ -18,6 +17,7 @@ import Loading from './components/Loading'
 import EditArtist from './components/EditArtist'
 import EditPlaylist from './components/EditPlaylist'
 import EditSong from './components/EditSong'
+import { BASE_URL } from './globals'
 
 export default function App() {
 
@@ -36,7 +36,7 @@ export default function App() {
 
   const getAuthUser = async () => {
     const id = localStorage.getItem('id')
-    axios.get(`${BASE_URL}/users/${id}`)
+    axios.get(`${BASE_URL}users/${id}`)
     .then(res => {
       setAuthUser(res.data)
     })
