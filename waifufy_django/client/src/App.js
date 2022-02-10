@@ -33,7 +33,7 @@ export default function App() {
     // set user auth to true
     toggleAuthenticated(true)
   }
-
+  
   const getAuthUser = async () => {
     const id = localStorage.getItem('id')
     axios.get(`${BASE_URL}users/${id}`)
@@ -42,9 +42,6 @@ export default function App() {
     })
   }
 
-  const someFunc = () => {
-    localStorage.setItem('a', 'bsdf')
-  }
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -52,7 +49,6 @@ export default function App() {
       getAuthUser()
       // console.log(token)
     }
-    someFunc()
   }, [])
 
   // show nav and footer only if user is authenticated

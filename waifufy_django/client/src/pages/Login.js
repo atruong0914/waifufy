@@ -14,7 +14,7 @@ export default function LoginForm(props) {
       
       // console.log(e.target.value)
       // console.log(e.target.id)
-      console.log(formVal)
+      // console.log(formVal)
     }
 
     const handleSubmit = async (e) => {
@@ -28,13 +28,13 @@ export default function LoginForm(props) {
         props.toggleAuthenticated(true)
         props.getAuthUser()
         // redirect to home page
-        navigate('/')
+        navigate('/artists')
+        console.log('submitted')
     }
 
   return (
     <div>
     <Box 
-      onSubmit={handleSubmit}
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -60,7 +60,7 @@ export default function LoginForm(props) {
       defaultValue={formVal.password}
     />
     </div>
-    <Button disabled={ !formVal.username || !formVal.password } variant='outlined'>Log In</Button>
+    <Button disabled={ !formVal.username || !formVal.password } variant='outlined' onClick={handleSubmit}>Log In</Button>
     </Box>
     </div>
   )
