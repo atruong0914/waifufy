@@ -6,10 +6,9 @@ import axios from 'axios'
 import About from './pages/About'
 import Artists from './pages/Artists'
 import Home from './pages/Home'
-import Login from './pages/Login'
-import Logout from './pages/Logout'
+import LoginForm from './pages/Login'
 import Playlists from './pages/Playlists'
-import Register from './pages/Register'
+import RegisterForm from './pages/Register'
 import Songs from './pages/Songs'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -88,7 +87,7 @@ export default function App() {
 
   return (
     <div>
-      { navShow() }{ footShow() }
+      { navShow() }
       <Routes>
       { authenticated ? (
         <>
@@ -105,17 +104,17 @@ export default function App() {
         <>
           <Route 
           path='/' 
-          element={ <Login
+          element={ <LoginForm
             setUser={setUser}
             toggleAuthenticated={toggleAuthenticated}
             getAuthedUser={getAuthUser}
           /> }
           />
-          <Route path='/register' element={<Register />} />
-        
+          <Route path='/register' element={<RegisterForm />} />
       </>
       )}
       </Routes>
+      { footShow() }
     </div>
   )
 }
