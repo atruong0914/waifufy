@@ -18,21 +18,26 @@ from django.urls import path
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from rest_framework.routers import SimpleRouter
+
+from accounts.views import Login, Register, Refresh
+from waifufy.views import UserList
+
+routes = SimpleRouter()
+
+routes.register('login', Login, basename='login')
+routes.register('register', Register, basename='register')
+routes.register('refresh', Refresh, basename='refresh')
+
+routes.register('user', UserList, basename='user')
+
+
 
 urlpatterns = [
+    *routes.urls,
     path('admin/', admin.site.urls),
     path('', include('waifufy.urls')),
     path('', include('accounts.urls')),
-    path('api/', include('waifufy.urls', namespace='waifufy')),
-    
-    path('api/user/', include('accounts.urls', namespace='accounts')),
-    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
 ]
 
 if settings.DEBUG:
