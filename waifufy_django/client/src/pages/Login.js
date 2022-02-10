@@ -11,10 +11,6 @@ export default function LoginForm(props) {
 
     const handleChange = (e) => {
        setFormVal({ ...formVal, [e.target.id]: e.target.value })
-      
-      // console.log(e.target.value)
-      // console.log(e.target.id)
-      // console.log(formVal)
     }
 
     const handleSubmit = async (e) => {
