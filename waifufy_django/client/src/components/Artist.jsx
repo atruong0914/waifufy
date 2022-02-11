@@ -2,15 +2,18 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios' 
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
+import { useEffect } from 'react'
 
 
-export default function Artist({ id, name, bio, artist_image, songs }) {
+export default function Artist({ id, name, bio, artist_image, songs,}) {
     const navigate = useNavigate()
 
     const updatePage = (id) => {
         navigate(`/artists/${id}`)
     }
-
+    console.log(songs)
+    // useEffect(() => {
+    // }, [])
   return (
     <div className='artist'>
         <Card sx={{ maxWidth: 300 }}/>
@@ -27,9 +30,9 @@ export default function Artist({ id, name, bio, artist_image, songs }) {
             <Typography variant='body'>
                 about:{bio}
             </Typography>
-            <Typography variant='body'>
-                songs:{songs}
-            </Typography>
+            {songs.map((song, index) => (
+                <p>{song.name}</p>
+            ))}
           </CardContent>
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>

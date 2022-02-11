@@ -10,6 +10,7 @@ export default function Artists() {
   const [loading, setLoading] = useState(true)
 
   const [artists, setArtists] = useState([])
+  // const [songs, setSongs] = useState([])
 
   const getArtists = async () => {
     // console.log(localStorage.getItem('token'))
@@ -27,26 +28,21 @@ export default function Artists() {
   if (loading) {
     return ( <div>Loading...</div> )
   }
-
+  
   return (
-    <div className='artist-display'>
-      <div className='artist-header'>
-        header
-      </div>
-      <div className='artists'>
-        {artists.map((artist, index) => (
-          <Artist
-          key={index}
-          id={artist.id}
-          name={artist.name}
-          bio={artist.bio}
-          artist_image={artist.artist_image}
-          songs={artist.songs}
-          />
-        ))}
-      </div>
-    
-    
-    </div>
+    <>
+    {artists.map((artist, index) => (
+      <Artist
+      key={index}
+      id={artist.id}
+      name={artist.name}
+      bio={artist.bio}
+      artist_image={artist.artist_image}
+      songs={artist.songs}
+      />
+      ))}
+    </>
   )
+
+
 }

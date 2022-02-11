@@ -3,10 +3,25 @@ from rest_framework import serializers
 from accounts.models import User
 
 
+class SongSerializer(serializers.ModelSerializer):
+    artist = serializers.PrimaryKeyRelatedField(
+        read_only=True
+    )
+
+    playlist = serializers.PrimaryKeyRelatedField(
+        queryset=Playlist.objects.all(),
+        many=True,
+    )
+
+
+    class Meta:
+        model = Song
+        fields = ('id', 'artist', 'playlist', 'name', 'song_image', 'song_file')
+
 class ArtistSerializer(serializers.ModelSerializer):
 
-    songs = serializers.PrimaryKeyRelatedField(
-        queryset=Song.objects.all(),
+    songs = SongSerializer(
+        read_only=True,
         many=True,
     )
 
@@ -15,26 +30,6 @@ class ArtistSerializer(serializers.ModelSerializer):
         model = Artist
         fields = ('id', 'name', 'bio', 'artist_image', 'songs')
 
-
-class SongSerializer(serializers.ModelSerializer):
-    artist = serializers.PrimaryKeyRelatedField(
-        read_only=True
-    )
-
-    artist_id = serializers.PrimaryKeyRelatedField(
-        queryset=Artist.objects.all(),
-        source='artist'
-    )
-
-    playlist = serializers.PrimaryKeyRelatedField(
-        queryset=Playlist.objects.all(),
-        many=True
-    )
-
-
-    class Meta:
-        model = Song
-        fields = ('id', 'artist', 'artist_id', 'playlist', 'name', 'song_image', 'song_file')
 
 
 class PlaylistSerializer(serializers.ModelSerializer):
