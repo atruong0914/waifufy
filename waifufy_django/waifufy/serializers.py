@@ -3,12 +3,13 @@ from rest_framework import serializers
 from accounts.models import User
 
 
-class ArtistSerializer(serializers.HyperlinkedModelSerializer):
+class ArtistSerializer(serializers.ModelSerializer):
 
     songs = serializers.PrimaryKeyRelatedField(
         queryset=Song.objects.all(),
         many=True,
     )
+
 
     class Meta:
         model = Artist
