@@ -10,9 +10,8 @@ const iState = {
   last_name:'' ,
   email:'', 
   username: '', 
-  password1: '', 
+  password: '', 
   password2: '', 
-  avatar: null
 }
 
 export default function RegisterForm(props) {
@@ -22,32 +21,47 @@ export default function RegisterForm(props) {
       last_name:'' ,
       email:'', 
       username: '', 
-      password1: '', 
-      password2: '', 
-      avatar: null
+      password: '', 
+      password2: '',
     })
+    const [selectedAvatar, setSelectedAvatar] = useState()
+    const [isAvatarPicked, setAvatarPicked] = useState(false)
 
     const handleChange = (e) => {
       setFormVal({ ...formVal, [e.target.id]: e.target.value })
+      // console.log(formVal)
     }
 
     const handleAvatarChange = (e) => {
-      setAvatar({ ...formVal, [e.target.id]: e.target.value })
+      setSelectedAvatar(e.target.files[0])
+      setAvatarPicked(true)
     }
 
     const handleSubmit = async (e) => {
       e.preventDefault()
-      await Register({
-        first_name: formVal.first_name,
-        last_name: formVal.last_name,
-        email: formVal.email,
-        username: formVal.username,
-        password: formVal.password,
-        avatar: 
-      })
-      setFormVal(iState)
-      navigate('/')
-    }
+      const formData = new FormData()
+      formData.append('avatar', selectedAvatar)
+      formData.append('email', formVal.email)
+      formData.append('username', formVal.username)
+      formData.append('first_name', formVal.first_name)
+      formData.append('last_name', formVal.last_name)
+      formData.append('password', formVal.password)
+
+      fetch(
+        'http://localhost:8000/register/',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          console.log('Success:', result);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    };
 
   return (
     <div>
@@ -91,11 +105,11 @@ export default function RegisterForm(props) {
     />
     <TextField
       required
-      id="password1"
+      id="password"
       label="Password"
       type="password"
       onChange={handleChange}
-      defaultValue={formVal.password1}
+      defaultValue={formVal.password}
     />
     <TextField
       required
@@ -105,20 +119,34 @@ export default function RegisterForm(props) {
       onChange={handleChange}
       defaultValue={formVal.password2}
     />
-      <TextField
+      <input
       required
       accept='image/png, image/jpeg'
       id="avatar"
       label="choose file"
       type="file"
-      onChange={handleChange}
-      defaultValue={formVal.avatar}
+      onChange={handleAvatarChange}
+      // defaultValue={avatar !== null ? avatar.avatar : ''}
     />
+    {isAvatarPicked ? (
+			<div>
+				<p>Filename: {selectedAvatar.name}</p>
+				<p>Filetype: {selectedAvatar.type}</p>
+				<p>Size in bytes: {selectedAvatar.size}</p>
+				<p>
+					lastModifiedDate:{' '}
+					{selectedAvatar.lastModifiedDate.toLocaleDateString()}
+				</p>
+			</div>
+			) : (
+				<p>Select a file to show details</p>
+			)}
+			<div></div>
     </div>
     <Button 
       disabled={ 
       !formVal.email && !formVal.username && !formVal.first_name && !formVal.last_name || 
-      !formVal.password1 && formVal.password2 === formVal.password1
+      !formVal.password && formVal.password2 === formVal.password
     } 
       variant='outlined' 
       onClick={handleSubmit}>

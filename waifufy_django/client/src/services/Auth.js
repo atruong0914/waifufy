@@ -14,8 +14,14 @@ export const Login = async (data) => {
 }
 
 export const Register = async (data) => {
+  console.log('banana')
   try {
-    const res = await Client.post('/register/', data)
+    console.log(data)
+    const res = await Client.post('/register/', data,{
+      headers: {
+        'content-type': 'multipart/form-data'
+      }})
+    // console.log(res)
     return res.data
   } catch (error) {
     throw error
