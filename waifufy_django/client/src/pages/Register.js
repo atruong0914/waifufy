@@ -23,6 +23,7 @@ export default function RegisterForm(props) {
       username: '', 
       password: '', 
       password2: '',
+      is_active: true
     })
     const [selectedAvatar, setSelectedAvatar] = useState()
     const [isAvatarPicked, setAvatarPicked] = useState(false)
@@ -46,10 +47,10 @@ export default function RegisterForm(props) {
       formData.append('first_name', formVal.first_name)
       formData.append('last_name', formVal.last_name)
       formData.append('password', formVal.password)
+      formData.append('is_active', formVal.is_active)
       
       const res = await Register(
         formData,
-        {is_active: true}
       ).then((res) => {
         console.log(res)
         navigate('/')
