@@ -13,7 +13,13 @@ import { Link } from 'react-router-dom'
     
     return (
       <div>
-        <Link to='/' onClick={logOut}>log out</Link>
+        <Link to='/'> Home </Link>
+        <Link to='/playlists' > Playlists </Link>
+        <Link to='/artists' > Artists </Link>
+        <Link to='/songs' > Songs </Link>
+        <Link to='/about' > About </Link>
+        <Link to='/' onClick={logOut}> Log out </Link>
+
       </div>
     )
   }

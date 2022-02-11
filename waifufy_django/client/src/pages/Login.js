@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Login } from '../services/Auth'
+import { Login, Register } from '../services/Auth'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
+import RegisterForm from './Register'
 
 export default function LoginForm(props) {
     const navigate = useNavigate()
@@ -27,6 +28,10 @@ export default function LoginForm(props) {
       // redirect to home page
       navigate('/')
       console.log('submitted')
+    }
+
+    const RegisterButton = (e) => {
+      navigate('/register')
     }
 
   return (
@@ -58,6 +63,7 @@ export default function LoginForm(props) {
     />
     </div>
     <Button disabled={ !formVal.username || !formVal.password } variant='outlined' onClick={handleSubmit}>Log In</Button>
+    <Button onClick={RegisterButton}>Register</Button>
     </Box>
     </div>
   )
