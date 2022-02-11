@@ -56,6 +56,7 @@ export default function RegisterForm(props) {
       )
         .then((response) => response.json())
         .then((result) => {
+          navigate('/')
           console.log('Success:', result);
         })
         .catch((error) => {
