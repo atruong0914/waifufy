@@ -18,10 +18,14 @@ export const Register = async (data) => {
   try {
     console.log(data)
     const res = await Client.post('/register/', data,{
+      // credentials: 'include',
       headers: {
         'content-type': 'multipart/form-data'
       }})
-    // console.log(res)
+    localStorage.setItem('token', res.data.token)
+    localStorage.setItem('refresh', res.data.refresh)
+    localStorage.setItem('id', res.data.user.id)
+    
     return res.data
   } catch (error) {
     throw error

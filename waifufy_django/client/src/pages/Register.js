@@ -46,30 +46,17 @@ export default function RegisterForm(props) {
       formData.append('first_name', formVal.first_name)
       formData.append('last_name', formVal.last_name)
       formData.append('password', formVal.password)
-
-    //   fetch(
-    //     'http://localhost:8000/register/',
-    //     {
-    //       method: 'POST',
-    //       body: formData,
-    //     }
-    //   )
-    //     .then((response) => response.json())
-    //     .then((result) => {
-    //       console.log('Success:', result);
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error:', error);
-    //     });
-    // };
-
-      await Register(
+      
+      const res = await Register(
         formData,
         {is_active: true}
-      )
+      ).then((res) => {
+        console.log(res)
+        navigate('/')
+      })
+      return res
       console.log('submitted')
       // setFormVal(iState)
-      navigate('/')
     }
 
   return (

@@ -25,9 +25,9 @@ class LoginSerializer(TokenObtainPairSerializer):
 
 
 class RegisterSerializer(UserSerializer):
-    password = serializers.CharField(max_length=100, write_only=True, required=True)
-    email = serializers.EmailField(required=True, write_only=True, max_length=100)
-    username = serializers.CharField(required=True, write_only=True, max_length=50)
+    password = serializers.CharField(max_length=100, required=True)
+    email = serializers.EmailField(required=True, max_length=100)
+    username = serializers.CharField(required=True, max_length=50)
 
     class Meta:
         model = User
