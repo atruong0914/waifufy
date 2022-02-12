@@ -7,7 +7,37 @@ import Song from '../components/Song'
 export default function Songs() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(true)
+  const [songs, setSongs] = useState([])
+
+  const getSongs = async () => {
+    const res = await axios.get(`${BASE_URL}songs/`, {
+      header: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+    })
+    setSongs(res.data)
+    setLoading(false)
+  }
+
+  useEffect(() => {
+    getSongs()
+  }, [id])
+
+  if (loading) {
+    return ( <div>loading songs...</div> )
+  }
+
   return (
-    <div>Songs</div>
+    <>
+    {songs.map((song, index) => (
+      <Song
+      key={index}
+      id={song.id}
+      name={song.name}
+      song_image={song.song_image}
+      song_file={song.song_file}
+      playlist={song.playlist}
+      />
+      ))}
+    </>
   )
 }

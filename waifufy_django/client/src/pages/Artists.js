@@ -8,12 +8,9 @@ export default function Artists() {
   const { id } = useParams()
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
-
   const [artists, setArtists] = useState([])
-  // const [songs, setSongs] = useState([])
 
   const getArtists = async () => {
-    // console.log(localStorage.getItem('token'))
     const res = await axios.get(`${BASE_URL}artists/`, {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
@@ -26,9 +23,9 @@ export default function Artists() {
   }, [id])
 
   if (loading) {
-    return ( <div>Loading...</div> )
+    return ( <div>loading artists...</div> )
   }
-  
+
   return (
     <>
     {artists.map((artist, index) => (
