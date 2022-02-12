@@ -13,7 +13,7 @@ export default function Playlist({ id, name, description, songs }) {
     if(!song) return null
 
     const songPlaying = () => {
-        <div>{song.name} is playing</div>
+      console.log(`${song.name} is playing`)
     }
 
     const updatePage = (playlistId) => {
@@ -60,7 +60,6 @@ export default function Playlist({ id, name, description, songs }) {
           onPlay={() => (songPlaying)}
           onEnded={() => setCurrentSong( i => i + 1 )}
           controls
-          customAdditionalControls={[]}
           alt='playlist song'
         />
         <div>{song.name} is playing!</div>
