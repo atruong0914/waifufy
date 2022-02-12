@@ -35,7 +35,6 @@ export default function EditArtist() {
     const res = await axios.get(`${BASE_URL}artists/${id}/`, {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
-    // console.log({headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}})
     setArtist(res.data)
     setLoading(false)
   }

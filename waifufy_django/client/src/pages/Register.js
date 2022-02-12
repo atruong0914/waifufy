@@ -21,7 +21,6 @@ export default function RegisterForm(props) {
 
     const handleChange = (e) => {
       setFormVal({ ...formVal, [e.target.id]: e.target.value })
-      // console.log(formVal)
     }
 
     const handleAvatarChange = (e) => {
@@ -47,8 +46,6 @@ export default function RegisterForm(props) {
         navigate('/')
       })
       return res
-      console.log('submitted')
-      // setFormVal(iState)
     }
 
   return (
@@ -114,7 +111,6 @@ export default function RegisterForm(props) {
       label="choose file"
       type="file"
       onChange={handleAvatarChange}
-      // defaultValue={avatar !== null ? avatar.avatar : ''}
     />
     {isAvatarPicked ? (
 			<div>
