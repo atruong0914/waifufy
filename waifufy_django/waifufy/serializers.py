@@ -9,12 +9,16 @@ from accounts.models import User
 class SongSerializer(serializers.ModelSerializer):
     artist = serializers.StringRelatedField()
 
+    artist_id = serializers.PrimaryKeyRelatedField(
+        read_only=True
+    )
+
     playlist = serializers.StringRelatedField(many=True)
 
 
     class Meta:
         model = Song
-        fields = ('id', 'artist', 'playlist', 'name', 'song_image', 'song_file')
+        fields = ('id', 'artist', 'playlist', 'name', 'song_image', 'song_file', 'artist_id')
 
 class ArtistSerializer(serializers.ModelSerializer):
 

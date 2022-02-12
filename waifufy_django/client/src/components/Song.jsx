@@ -28,7 +28,7 @@ export default function Song({ id, name, song_image, song_file, artist}) {
                 name:{name}
             </Typography>
             artist:
-            <Button size='small' onClick={()=>{artistSelection(id)}}> {artist}, </Button>
+            <Button size='small' onClick={()=>{artistSelection(`${artist.id}`)}}> {artist}, </Button>
           </CardContent>
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>

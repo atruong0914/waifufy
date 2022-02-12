@@ -6,7 +6,6 @@ import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@
 
 export default function Artist({ id, name, bio, artist_image, songs, }) {
     const navigate = useNavigate()
-    const { songId } = useParams()
     const updatePage = (id) => {
       navigate(`/artists/${id}`)
     }
