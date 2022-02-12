@@ -12,14 +12,14 @@ export default function Home() {
   const [allSongs, setAllSongs] = useState([])
 
   const getPlaylists = async () => {
-    const res = await axios.get(`${BASE_URL}playlists/`, {
+    const res = await axios.get(`${BASE_URL}songs/`, {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
     // allSongs.push(...res.data)
-    setAllSongs(...res.data)
+    setAllSongs(res.data)
     setLoading(false)
   }
-  console.log(allSongs)
+  // console.log(allSongs)
   useEffect(() => {
     getPlaylists()
   }, [playlistId])

@@ -6,21 +6,17 @@ import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@
 export default function MusicPlayer({ id, name, songs}) {
     const navigate = useNavigate()
     const [currentSong, setCurrentSong] = useState(0)
-
+    
     const song = songs[currentSong]
-
+    
     if(!song) return null
-
+    
     const songPlaying = () => {
       console.log(`${song.name} is playing`)
     }
-
-    const updatePage = (playlistId) => {
-      navigate(`/playlists/${playlistId}`)
-    }
-      
-    const songSelection = (songId) => {
-      navigate(`/songs/${songId}`)
+    
+    const aboutPage = () => {
+      navigate(`/about`)
     }
 return (
     <div className='artist'>
@@ -40,7 +36,7 @@ return (
         />
         <div>{song.name} is playing!</div>
           <CardActions>
-            <Button variant='outlined' size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
+            <Button variant='outlined' size='small' onClick={()=>{aboutPage()}}>Learn More</Button>
           </CardActions>
     </div>
   )
