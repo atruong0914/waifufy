@@ -4,8 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
-import { UpdateArtist } from '../services/Auth';
+import { Button, Card, CardMedia, CardContent } from '@mui/material';
 import Client from '../services/api';
 
 export default function EditArtist() {
@@ -80,6 +79,7 @@ export default function EditArtist() {
 
   return (
     <div>
+    <Card sx={{ maxWidth: 300 }}/>
     <Box 
       component="form"
       sx={{
@@ -88,7 +88,13 @@ export default function EditArtist() {
       noValidate
       autoComplete="off"
     >
-    <div className='text-edit'>
+    <CardMedia
+      component='img'
+      height='500'
+      image={`${artist.artist_image}`}
+      alt={`${artist.name}`}
+          />
+    <CardContent>
     <TextField
       required
       id="name"
@@ -125,7 +131,7 @@ export default function EditArtist() {
 				<p>Select a file to show details</p>
 			)}
 			<div></div>
-    </div>
+    </CardContent>
     <Button
     variant='outlined'
     onClick={handleSubmit}>

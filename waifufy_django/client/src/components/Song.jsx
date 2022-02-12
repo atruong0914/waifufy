@@ -15,7 +15,7 @@ export default function Song({ id, name, song_image, song_file, artist, artist_i
     }
 
   return (
-    <div className='artist'>
+    <div className='song'>
         <Card sx={{ maxWidth: 300 }}/>
           <CardMedia
             component='img'
@@ -30,6 +30,12 @@ export default function Song({ id, name, song_image, song_file, artist, artist_i
             artist:
             <Button size='small' onClick={()=>{artistSelection(`${artist_id}`)}}> {artist}, </Button>
           </CardContent>
+          <CardMedia
+            component='audio'
+            src={song_file}
+            controls
+            alt='music'
+          />
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
           </CardActions>
