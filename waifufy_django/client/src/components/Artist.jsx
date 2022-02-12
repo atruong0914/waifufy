@@ -1,8 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios' 
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
-import { useEffect } from 'react'
+
 
 
 export default function Artist({ id, name, bio, artist_image, songs,}) {
@@ -11,10 +10,6 @@ export default function Artist({ id, name, bio, artist_image, songs,}) {
     const updatePage = (id) => {
         navigate(`/artists/${id}`)
     }
-    // console.log(songs)
-    // const songPage = (id) => {
-    //     navigate(`/songs/${id}`)
-    // }
 
   return (
     <div className='artist'>
@@ -41,9 +36,6 @@ export default function Artist({ id, name, bio, artist_image, songs,}) {
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
           </CardActions>
-            
-    
-    
     </div>
   )
 }

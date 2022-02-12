@@ -6,7 +6,6 @@ import Artist from '../components/Artist'
 
 export default function Artists() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [artists, setArtists] = useState([])
 

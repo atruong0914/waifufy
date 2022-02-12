@@ -1,17 +1,15 @@
+from dataclasses import field, fields
+
+from django.forms import fields_for_model
 from .models import Playlist, Artist, Song
 from rest_framework import serializers
 from accounts.models import User
 
 
 class SongSerializer(serializers.ModelSerializer):
-    artist = serializers.PrimaryKeyRelatedField(
-        read_only=True
-    )
+    artist = serializers.StringRelatedField()
 
-    playlist = serializers.PrimaryKeyRelatedField(
-        queryset=Playlist.objects.all(),
-        many=True,
-    )
+    playlist = serializers.StringRelatedField(many=True)
 
 
     class Meta:

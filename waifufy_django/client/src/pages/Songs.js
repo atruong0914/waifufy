@@ -6,13 +6,12 @@ import Song from '../components/Song'
 
 export default function Songs() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [songs, setSongs] = useState([])
 
   const getSongs = async () => {
     const res = await axios.get(`${BASE_URL}songs/`, {
-      header: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
+      headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
     setSongs(res.data)
     setLoading(false)
@@ -35,7 +34,7 @@ export default function Songs() {
       name={song.name}
       song_image={song.song_image}
       song_file={song.song_file}
-      playlist={song.playlist}
+      artist={song.artist}
       />
       ))}
     </>
