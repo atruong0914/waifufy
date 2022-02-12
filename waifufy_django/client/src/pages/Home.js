@@ -30,11 +30,11 @@ export default function Home() {
   return (
     <div>
     <>
-    {/* <CardMedia
-    component='audio'
-    src={songs.song_file}
-    controls
-    /> */}
+    
+      <MusicPlayer
+      songs={allSongs}
+      />
+
     </>
     </div>
   )

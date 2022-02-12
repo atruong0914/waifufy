@@ -32,7 +32,7 @@ return (
            </CardContent>
         <CardMedia
           component='audio'
-          src={song_file}
+          src={song.song_file}
           onPlay={() => (songPlaying)}
           onEnded={() => setCurrentSong( i => i + 1 )}
           controls
