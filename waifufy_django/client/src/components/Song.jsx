@@ -10,6 +10,10 @@ export default function Song({ id, name, song_image, song_file, artist}) {
         navigate(`/songs/${id}`)
     }
 
+    const artistSelection = (id) => {
+        navigate(`/artists/${id}`)
+    }
+
   return (
     <div className='artist'>
         <Card sx={{ maxWidth: 300 }}/>
@@ -23,9 +27,8 @@ export default function Song({ id, name, song_image, song_file, artist}) {
             <Typography gutterBottom variant='h4' component='div'>
                 name:{name}
             </Typography>
-            <Typography variant='body'>
-                artist: {artist}
-            </Typography>
+            artist:
+            <Button size='small' onClick={()=>{artistSelection(id)}}> {artist}, </Button>
           </CardContent>
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>

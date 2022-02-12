@@ -98,8 +98,8 @@ export default function App() {
           <Route path='/playlists' element={<Playlists authUser={authUser}/>} />
           <Route path='/songs' element={<Songs authUser={authUser}/>} />
           <Route path='/artists/:id' element={<EditArtist authUser={authUser}/>} />
-          <Route path='/playlists/:id' element={<EditPlaylist authUser={authUser}/>} />
-          <Route path='/songs/:id' element={<EditSong authUser={authUser}/>} />
+          <Route path='/playlists/:playlistId' element={<EditPlaylist authUser={authUser}/>} />
+          <Route path='/songs/:songId' element={<EditSong authUser={authUser}/>} />
         </>
       ) : (
         <>

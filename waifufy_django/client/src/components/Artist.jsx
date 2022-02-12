@@ -1,18 +1,18 @@
 import React from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
 
 
 
-export default function Artist({ id, name, bio, artist_image, songs,}) {
+export default function Artist({ id, name, bio, artist_image, songs, }) {
     const navigate = useNavigate()
-
+    const { songId } = useParams()
     const updatePage = (id) => {
       navigate(`/artists/${id}`)
     }
-
-    const songSelection = (id) => {
-      navigate(`/songs/${id}`)
+      
+    const songSelection = (songId) => {
+      navigate(`/songs/${songId}`)
     }
 
   return (
@@ -33,7 +33,7 @@ export default function Artist({ id, name, bio, artist_image, songs,}) {
             </Typography>
             <p> songs: 
             {songs.map((song, index) => (
-                <Button size='small' onClick={()=>{songSelection(id)}}> {song.name}, </Button>
+                <Button size='small' onClick={()=>{songSelection(`${song.id}`)}}> {song.name}, </Button>
             ))}
             </p>
           </CardContent>
