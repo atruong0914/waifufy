@@ -37,7 +37,7 @@ export default function Song({ id, name, song_image, song_file, artist, artist_i
             alt='music'
           />
           <CardActions>
-            <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
+            <Button size='small' onClick={()=>{updatePage(`${id}`)}}>Edit</Button>
           </CardActions>
     </div>
   )

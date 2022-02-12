@@ -21,7 +21,7 @@ export default function EditArtist() {
 
   const handleChange = (e) => {
     setFormVal({ ...formVal, [e.target.id]: e.target.value })
-    console.log(formVal)
+    // console.log(formVal)
   }
 
   const handleImageChange = (e) => {
