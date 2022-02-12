@@ -3,15 +3,15 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
 
 
-export default function Song({ id, name, song_image, song_file, artist}) {
+export default function Song({ id, name, song_image, song_file, artist, artist_id}) {
     const navigate = useNavigate()
 
     const updatePage = (id) => {
         navigate(`/songs/${id}`)
     }
 
-    const artistSelection = (id) => {
-        navigate(`/artists/${id}`)
+    const artistSelection = (artist_id) => {
+        navigate(`/artists/${artist_id}`)
     }
 
   return (
@@ -28,7 +28,7 @@ export default function Song({ id, name, song_image, song_file, artist}) {
                 name:{name}
             </Typography>
             artist:
-            <Button size='small' onClick={()=>{artistSelection(`${artist.id}`)}}> {artist}, </Button>
+            <Button size='small' onClick={()=>{artistSelection(`${artist_id}`)}}> {artist}, </Button>
           </CardContent>
           <CardActions>
             <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>

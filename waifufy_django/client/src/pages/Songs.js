@@ -35,6 +35,7 @@ export default function Songs() {
       song_image={song.song_image}
       song_file={song.song_file}
       artist={song.artist}
+      artist_id={song.artist_id}
       />
       ))}
     </>
