@@ -101,6 +101,12 @@ export default function EditSong() {
       image={`${song.song_image}`}
       alt={`${song.name}`}
           />
+    <CardMedia
+      component='audio'
+      src={`${song.song_file}`}
+      controls
+      alt='music'
+      />
     <CardContent>
     <TextField
       required
