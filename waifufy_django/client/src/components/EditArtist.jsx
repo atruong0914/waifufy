@@ -39,6 +39,15 @@ export default function EditArtist() {
     setLoading(false)
   }
 
+  const handleDelete = async (e) => {
+    const res = await Client.delete(`/artists/${id}/`)
+    .then((res) => {
+      console.log(res)
+      navigate(-1)
+    })
+    return res
+  }
+
   useEffect(() => {
     getSelectedArtist()
   }, [id])
@@ -121,6 +130,11 @@ export default function EditArtist() {
     variant='outlined'
     onClick={handleSubmit}>
       submit
+    </Button>
+    <Button
+    variant='contained'
+    onClick={handleDelete}>
+      delete
     </Button>
     </Box>
     </div>
