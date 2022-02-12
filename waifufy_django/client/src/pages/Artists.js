@@ -17,7 +17,6 @@ export default function Artists() {
     const res = await axios.get(`${BASE_URL}artists/`, {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
     })
-    localStorage.setItem('token', res.data.access)
     setArtists(res.data)
     setLoading(false)
   }

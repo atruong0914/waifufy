@@ -24,6 +24,7 @@ export default function App() {
   const [user, setUser] = useState(null)
   const [authUser, setAuthUser] = useState({})
   const [loading, setLoading] = useState(true)
+
   
   const checkToken = async () => {
     // if a token exists, send to local storage to keep user logged in

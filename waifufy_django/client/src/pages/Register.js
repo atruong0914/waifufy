@@ -5,15 +5,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 
-const iState = { 
-  first_name:'', 
-  last_name:'' ,
-  email:'', 
-  username: '', 
-  password: '', 
-  password2: '', 
-}
-
 export default function RegisterForm(props) {
     const navigate = useNavigate()
     const [formVal, setFormVal] = useState({ 

@@ -1,5 +1,7 @@
 import Client from './api'
 
+
+
 export const Login = async (data) => {
   try {
     const res = await Client.post('/login/', data)
@@ -44,3 +46,4 @@ export const CheckSession = async () => {
     throw error
   }
 }
+
