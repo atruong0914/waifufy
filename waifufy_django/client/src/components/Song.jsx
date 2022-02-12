@@ -24,7 +24,7 @@ export default function Song({ id, name, song_image, song_file, artist}) {
                 name:{name}
             </Typography>
             <Typography variant='body'>
-                {artist}
+                artist: {artist}
             </Typography>
           </CardContent>
           <CardActions>

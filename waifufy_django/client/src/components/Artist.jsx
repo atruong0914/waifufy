@@ -8,7 +8,11 @@ export default function Artist({ id, name, bio, artist_image, songs,}) {
     const navigate = useNavigate()
 
     const updatePage = (id) => {
-        navigate(`/artists/${id}`)
+      navigate(`/artists/${id}`)
+    }
+
+    const songSelection = (id) => {
+      navigate(`/songs/${id}`)
     }
 
   return (
@@ -29,12 +33,12 @@ export default function Artist({ id, name, bio, artist_image, songs,}) {
             </Typography>
             <p> songs: 
             {songs.map((song, index) => (
-                <Link to='/songs/:id'> {song.name}, </Link>
+                <Button size='small' onClick={()=>{songSelection(id)}}> {song.name}, </Button>
             ))}
             </p>
           </CardContent>
           <CardActions>
-            <Button size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
+            <Button variant='outlined' size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
           </CardActions>
     </div>
   )
