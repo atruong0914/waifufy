@@ -13,6 +13,11 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
     }
     
     return (
+      <>
+      <div className='header'>
+      <img src='/waifu.png' className='waifu'/>
+      <h1 className='waifufy'>✿✿✿ waifufy ✿✿✿</h1>
+      </div>
       <div className='nav'>
         <MusicNoteIcon className='music-icon'/>
         <Link to='/' className='link'> Home </Link>
@@ -24,6 +29,7 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
         <Link to='/' onClick={logOut} className='link'> Log out </Link>
       </div>
       </div>
+      </>
     )
   }
 

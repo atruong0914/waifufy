@@ -45,7 +45,9 @@
   display: flex;
   font-size: 30px;
   font-family: Quicksand, sans-serif;
+  background-color: white;
 }
+
 
 .MuiCardMedia-img {
   display: flex;
@@ -53,7 +55,7 @@
   justify-content: center;
   height: 400px;
   position: relative;
-  border: 40px solid white;
+
 }
 
 a {
@@ -80,6 +82,7 @@ a:hover {
   background-color: rgb(44, 41, 41);
   width: 99vw;
   border-radius: 5px;
+  height: 40px;
 }
 
 .footer {
@@ -98,4 +101,43 @@ a:hover {
 
 .music-icon, .icon-footer {
   color: white;
+}
+
+.header, .waifu {
+  height: 200px;
+}
+
+.waifu {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+}
+
+.chika {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 300px;
+  width: auto;
+}
+
+.song-name-home {
+  font-family: Quicksand, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.sakura {
+  background-image: url('/public/sakura.png');
+  background-size: cover;
+}
+
+.waifufy {
+  font-size: 100px;
+  font-family: Quicksand, sans-serif;
+  display: flex;
+  flex-direction: row;
+  margin-top: -150px;
+  margin-left: 400px;
+  color: rgb(252, 151, 166);
 }

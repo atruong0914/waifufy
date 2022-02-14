@@ -28,7 +28,10 @@ export default function Home() {
     return ( <div>loading Playlists...</div> )
   }
   return (
-    <div>
+    <div className='sakura'>
+      <div className='chika'>
+        <img src='/chika-dance.gif' />
+      </div>
     <>
     
       <MusicPlayer

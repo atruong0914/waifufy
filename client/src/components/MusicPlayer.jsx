@@ -40,9 +40,6 @@ return (
     <div className='artist'>
         <Card sx={{ maxWidth: 300 }}/>
           <CardContent>
-            <Typography gutterBottom variant='h4' component='div' className='song-name'>
-              song name: {song.name}
-            </Typography>
            </CardContent>
         <CardMedia
           component='img'
@@ -65,7 +62,7 @@ return (
         </IconButton> */}
         <div className='song-playing'>{song.name} is playing!</div>
           <CardActions>
-            <Button variant='outlined' size='small' onClick={()=>{aboutPage()}}>Learn More</Button>
+            <Button variant='contained' size='small' onClick={()=>{aboutPage()}} className='learn'>Learn More</Button>
           </CardActions>
     </div>
   )
