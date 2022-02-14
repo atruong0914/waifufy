@@ -31,6 +31,7 @@ return (
           src={song.song_file}
           onPlay={() => (songPlaying)}
           onEnded={() => setCurrentSong( i => i + 1 )}
+          autoPlay={true}
           controls
           alt='playlist song'
         />
