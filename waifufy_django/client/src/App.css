@@ -82,6 +82,13 @@ a:hover {
   border-radius: 5px;
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(44, 41, 41);
+}
+
 .log-out {
   display: flex;
   justify-content: flex-end;
@@ -89,6 +96,6 @@ a:hover {
   margin-left: 490px;
 }
 
-.music-icon {
+.music-icon, .icon-footer {
   color: white;
 }
