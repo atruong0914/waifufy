@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
-
+import '../App.css'
 
 
 export default function Playlist({ id, name, description, songs }) {
@@ -28,11 +28,11 @@ export default function Playlist({ id, name, description, songs }) {
     <div className='artist'>
         <Card sx={{ maxWidth: 300 }}/>
           <CardContent>
-            <Typography gutterBottom variant='h4' component='div'>
-              name:{name}
+            <Typography gutterBottom variant='h4' component='div' className='playlist-name'>
+              playlist name: {name}
             </Typography>
-            <Typography variant='body'>
-              description:{description}
+            <Typography variant='body' className='playlist-desc'>
+              description: {description}
             </Typography>
             <p> songs: 
             {songs.map((song, index) => (
@@ -62,7 +62,7 @@ export default function Playlist({ id, name, description, songs }) {
           controls
           alt='playlist song'
         />
-        <div>{song.name} is playing!</div>
+        <div className='song-playing'>{song.name} is playing!</div>
           <CardActions>
             <Button variant='outlined' size='small' onClick={()=>{updatePage(id)}}>Edit</Button>
           </CardActions>

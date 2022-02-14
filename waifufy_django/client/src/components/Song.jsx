@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
-
+import '../App.css'
 
 export default function Song({ id, name, song_image, song_file, artist, artist_id}) {
     const navigate = useNavigate()

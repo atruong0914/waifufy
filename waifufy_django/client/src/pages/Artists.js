@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import Artist from '../components/Artist'
+import '../App.css' 
 
 export default function Artists() {
   const { id } = useParams()

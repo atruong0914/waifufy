@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { Card, CardMedia, CardContent, Button, Typography, CardActions } from '@mui/material'
-
+import '../App.css'
 
 
 export default function Artist({ id, name, bio, artist_image, songs, }) {
@@ -24,15 +24,15 @@ export default function Artist({ id, name, bio, artist_image, songs, }) {
             alt={name}
           />
           <CardContent>
-            <Typography gutterBottom variant='h4' component='div'>
-                name:{name}
+            <Typography gutterBottom variant='h4' component='div' className='artist-name'>
+                name: {name}
             </Typography>
-            <Typography variant='body'>
-                about:{bio}
+            <Typography variant='body' className='artist-bio'>
+                about: {bio}
             </Typography>
-            <p> songs: 
+            <p> songs:  
             {songs.map((song, index) => (
-                <Button size='small' onClick={()=>{songSelection(`${song.id}`)}}> {song.name}, </Button>
+                <Button size='small' onClick={()=>{songSelection(`${song.id}`)}}>  {song.name}, </Button>
             ))}
             </p>
           </CardContent>

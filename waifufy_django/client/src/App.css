@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -35,4 +39,56 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.song-playing, .song-name, .artist-name, .artist-bio, p, .playlist-name, .playlist-desc, .song{
+  display: flex;
+  font-size: 30px;
+  font-family: Quicksand, sans-serif;
+}
+
+.MuiCardMedia-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 400px;
+  position: relative;
+  border: 40px solid white;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+a:hover {
+  color: rgb(190, 169, 169);
+}
+
+.link {
+  display: flex;
+  font-family: Quicksand, sans-serif;
+  flex-direction: row;
+  margin-left: 80px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 100px;
+  background-color: rgb(44, 41, 41);
+  width: 99vw;
+  border-radius: 5px;
+}
+
+.log-out {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  margin-left: 490px;
+}
+
+.music-icon {
+  color: white;
 }
